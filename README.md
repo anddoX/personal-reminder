@@ -4,6 +4,7 @@ Personal Reminder Program
 
 LAST UPDATED: 1/14/2026
 
+//Note to self: may need to revise this
 
 1) *****PROJECT OVERVIEW*****
 
