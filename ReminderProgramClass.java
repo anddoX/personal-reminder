@@ -14,24 +14,36 @@ public class ReminderProgramClass {
 		date.set(Calendar.DAY_OF_YEAR, day+1);
 		return "tomorrow"; //sets the variable to tomorrow for printing
 	}
-	
-	private enum timeAbbrevation {
-		AM(0),
-		PM(1);
 		
-		private final int timeAbbVal;
-		
-		private timeAbbrevation(int timeAbbVal) {
-			this.timeAbbVal = timeAbbVal;
-		}
-	}
-	
-	
 	public void startProgram() {
+		
+		/*The code from the frame to text area are all for the frame that 
+		pops up when it's time for the reminder to pop up*/
+		JFrame frame = new JFrame();
+		ImageIcon swingImage = new ImageIcon("swing_9.png");
+		frame.setIconImage(swingImage.getImage());
+		frame.setSize(600,600);
+		frame.setResizable(false);
+		frame.setTitle("REMINDER");
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setEditable(false);
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		frame.getContentPane().add(scrollPane);
+		textArea.setFont(new Font("Work Sans", Font.PLAIN, 20));
+		
+		
+		
+		//When the program starts running
 		System.out.println(ConsoleColors.TEXT_GREEN + "If you don't see the reminder prompt immediately, "
 		+ "wait for a moment or restart the program.\nYou can also try removing all windows."
 		+ ConsoleColors.TEXT_RESET);
 		System.out.println("------");
+		
 		//*****Input dialog #1*****
 		String userReminder = JOptionPane.showInputDialog(
 		null,
@@ -58,24 +70,7 @@ public class ReminderProgramClass {
 			System.exit(0);
 		}
 		
-		/*The code from the frame to text area are all for the frame that 
-		pops up when it's time for the reminder to pop up*/
-		JFrame frame = new JFrame();
-		ImageIcon swingImage = new ImageIcon("swing_9.png");
-		frame.setIconImage(swingImage.getImage());
-		frame.setSize(600,600);
-		frame.setResizable(false);
-		frame.setTitle("REMINDER");
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setLineWrap(true);
-		textArea.setWrapStyleWord(true);
-		textArea.setEditable(false);
-		JScrollPane scrollPane = new JScrollPane(textArea);
-		frame.getContentPane().add(scrollPane);
-		textArea.setFont(new Font("Work Sans", Font.PLAIN, 20));
 			
 
 		Timer timer = new Timer();
@@ -148,8 +143,8 @@ public class ReminderProgramClass {
 		String[] timeAbbrevationButtons = {"AM", "PM"};
 		String printTimeAbbrevation = "";
 		
-		int AM = timeAbbrevation.AM.timeAbbVal;
-		int PM = timeAbbrevation.PM.timeAbbVal;
+		int AM = 0;
+		int PM = 1;
 		
 		int setTimeAbbrevation = JOptionPane.showOptionDialog( null,
 	            "Choose between AM or PM.",
@@ -240,7 +235,7 @@ the reminder should be scheduled today or tomorrow*/
 		+ printMinute + printTimeAbbrevation);
 		textArea.setText("REMINDER: " + userReminder + " at " + printHour + ":" + printMinute + printTimeAbbrevation);	
 		
-		
+		//Now the actual reminder gets scheduled here
 		date.set(Calendar.AM_PM, setTimeAbbrevation);
 		date.set(Calendar.HOUR, userHourInput);
 		date.set(Calendar.MINUTE,userMinuteInput); 
