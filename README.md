@@ -128,7 +128,8 @@ EXCEPTION HANDLING:
 The program will throw an exception because of these two reasons:
 1) The user doesn't enter any time, leading to NumberFormatException
 
-	catch(NumberFormatException e) {
+```
+    catch(NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, 
 			"Please enter a time for the reminder.",
 			"Error Message",
@@ -136,6 +137,8 @@ The program will throw an exception because of these two reasons:
 			System.out.println("Please enter a time for the reminder.");
 			System.exit(0);
 	}
+```
+	
 
 
 2) The user's time has an incorrect format or has space(s), which causes
