@@ -2,7 +2,6 @@ import java.awt.Font;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -19,8 +18,6 @@ public class ReminderProgramClass {
 		/*The code from the frame to text area are all for the frame that 
 		pops up when it's time for the reminder to pop up*/
 		JFrame frame = new JFrame();
-		ImageIcon swingImage = new ImageIcon("swing_9.png");
-		frame.setIconImage(swingImage.getImage());
 		frame.setSize(600,600);
 		frame.setResizable(false);
 		frame.setTitle("REMINDER");
